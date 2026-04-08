@@ -11,5 +11,10 @@ public class HelloController
      {
              return "Hi welcome to springboot devloper ";
          }
+    @GetMapping("/sample")
+    public String sample()
+    {
+        return "sampleChangeForgit";
+    }
      
 }
