@@ -24,7 +24,7 @@ public class StudentController {
 
     // Get student by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable int id) {
+    public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
         Optional<Student> student = studentService.getStudentById(id);
         return student.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -39,7 +39,7 @@ public class StudentController {
 
     // Update student
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody Student updatedStudent) {
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
         Optional<Student> student = studentService.updateStudent(id, updatedStudent);
         return student.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -47,7 +47,7 @@ public class StudentController {
 
     // Delete student
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStudent(@PathVariable int id) {
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         boolean isDeleted = studentService.deleteStudent(id);
         if (isDeleted) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -56,4 +56,3 @@ public class StudentController {
         }
     }
 }
-
