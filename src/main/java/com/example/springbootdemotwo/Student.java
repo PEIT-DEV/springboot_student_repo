@@ -1,14 +1,22 @@
 package com.example.springbootdemotwo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Student {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String email;
     private String course;
     private double gpa;
 
     // Constructor
-    public Student(int id, String name, String email, String course, double gpa) {
+    public Student(Long id, String name, String email, String course, double gpa) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -21,11 +29,11 @@ public class Student {
     }
 
     // Getters and Setters
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -72,4 +80,3 @@ public class Student {
                 '}';
     }
 }
-
